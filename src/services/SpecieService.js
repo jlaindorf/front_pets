@@ -3,6 +3,7 @@ import axios from 'axios';
 class SpecieService {
 
     async createSpecie() {
+        
     }
 
     async getAllSpecies() {
