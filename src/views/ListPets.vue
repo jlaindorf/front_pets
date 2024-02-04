@@ -1,6 +1,8 @@
 <template>
+    <v-conteiner>
+        <h1>Lista de Pets</h1>
     <v-table>
-      <thead>
+      <thead class="header-table">
         <tr>
           <th class="text-left">
             Nome
@@ -21,6 +23,7 @@
         </tr>
       </tbody>
     </v-table>
+</v-conteiner>
   </template>
 <script>
 import PetService from '../services/PetService'
@@ -32,7 +35,7 @@ export default{
         }
     },
     mounted(){
-        PetService.getAllPets()
+        PetService.getAllPets(this.$route.params.id)
         .then((data)=>{
             this.pets = data
         })
@@ -44,5 +47,13 @@ export default{
     
 </script>
 <style scoped>
+.header-table{
+    background-color: tomato;
+    color: #fff;
+    font-weight:bold ;
+}
+tbody tr:nth-child(2n){
+ background: #e9e7e7;
+}
 
 </style>
