@@ -8,7 +8,16 @@
             Nome
           </th>
           <th class="text-left">
-            raça
+            Raça
+          </th>
+          <th class="text-left">
+            Porte
+          </th>
+          <th class="text-left">
+            Peso(Kg)
+          </th>
+          <th class="text-left">
+            Idade
           </th>
         </tr>
       </thead>
@@ -19,6 +28,9 @@
         >
           <td>{{ pet.pet_name }}</td>
           <td>{{ pet.race.name }}</td>
+          <td>{{ pet.size }}</td>
+          <td>{{ pet.weight }}</td>
+          <td>{{ pet.age}}</td>
          
         </tr>
       </tbody>
