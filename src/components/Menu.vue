@@ -18,7 +18,7 @@
              value="myfiles">
             </v-list-item>
           </router-link>
-          <router-link to="/">
+          <router-link to="/pets/novo">
            <v-list-item 
             prepend-icon="mdi-dog"
             title="Novo Pet" 
