@@ -13,7 +13,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols="6">
+      <v-col cols="4">
         <v-select
             label="Tamanho"
             :items="itemsSize"
@@ -22,7 +22,7 @@
             v-model="size"
           />
       </v-col>
-      <v-col cols="6">
+      <v-col cols="4">
         <v-select
             label="Espécie"
             :items="itemsSpecies"
@@ -32,12 +32,23 @@
             v-model="specie"
           />
       </v-col>
+      <v-col cols="4">
+        <v-select
+            label="Raça"
+            :items="itemsRaces"
+            item-title="name"
+            item-value="id"
+            variant="outlined"
+            v-model="race"
+          />
+      </v-col>
     </v-row>
   </v-card>
 </template>
 <script>
 import {optionsSize} from '../constants/pet.constants'
 import SpecieService from '../services/SpecieService';
+import RaceService from '../services/RaceService';
 
 export default {
   data() {
@@ -49,7 +60,9 @@ export default {
       itemsSize:  optionsSize ,
       size:'',
       itemsSpecies :[],
-      specie:''
+      specie:'',
+      itemsRaces:[],
+      race:''
     }
   },
   mounted(){
@@ -59,8 +72,15 @@ export default {
     })
     .catch(() => {
         alert('Houve um erro')
+  }),
+  RaceService.getAllRaces()
+    .then(data =>{
+      this.itemsRaces = data
+    })
+    .catch(() => {
+        alert('Houve um erro')
   })
-}
+  }
 }
 </script>
 <style></style>
