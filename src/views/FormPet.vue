@@ -1,5 +1,8 @@
 
 <template>
+    <v-snackbar v-model="success" color="success" location="top right" timeout="3000">
+    Pet cadastrado com sucesso!
+  </v-snackbar>
   <form @submit.prevent="handleSubmit">
     <v-card width="80%" class="mx-auto px-6 mt-4" title="Cadastro Pet">
       <v-row>
@@ -52,7 +55,9 @@ export default {
       itemsSpecies: [],
       specie: '',
       itemsRaces: [],
-      race: ''
+      race: '',
+
+      success: false,
     }
   },
   methods: {
@@ -64,8 +69,16 @@ export default {
         "race_id": this.race,
         "age": this.age,
         "weight": this.weight
+
       }).then(()=>{
-        alert("cadastrado ocom sucesso ")
+        this.success = true 
+       {  this.name='',
+          this.size = '',
+          this.specie = '',
+          this.race = '',
+          this.age = '',
+          this.weight = ''}
+
       }) 
       .catch(() => {
           alert('Houve um erro')
