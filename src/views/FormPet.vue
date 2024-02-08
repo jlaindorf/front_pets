@@ -1,5 +1,6 @@
 
 <template>
+  <form @submit.prevent="handleSubmit">
   <v-card width="80%" class="mx-auto px-6 mt-4" title="Cadastro Pet">
     <v-row>
       <v-col cols="12" md="8">
@@ -43,7 +44,11 @@
           />
       </v-col>
     </v-row>
+    <v-card-actions  class="d-flex justify-end">
+      <v-btn  type="submit" color="orange" variant="flat">Cadastrar</v-btn>
+    </v-card-actions>
   </v-card>
+</form>
 </template>
 <script>
 import {optionsSize} from '../constants/pet.constants'
@@ -64,6 +69,9 @@ export default {
       itemsRaces:[],
       race:''
     }
+  },
+  methods(){
+
   },
   mounted(){
     SpecieService.getAllSpecies()
