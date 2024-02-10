@@ -11,6 +11,7 @@
         <v-divider></v-divider>
   
         <v-list density="compact" nav>
+
           <router-link to="/home">
             <v-list-item
              prepend-icon="mdi-home" 
@@ -18,6 +19,7 @@
              value="myfiles">
             </v-list-item>
           </router-link>
+
           <router-link to="/pets/novo">
            <v-list-item 
             prepend-icon="mdi-dog"
@@ -25,8 +27,27 @@
             value="myfiles">
             </v-list-item>
           </router-link>
+
+          <router-link to="/veterinarios" v-if="permissions.includes('get-profissionals')">
+           <v-list-item 
+            prepend-icon="mdi-doctor"
+            title="Profissionais" 
+            value="myfiles">
+            </v-list-item>
+          </router-link>
+
         </v-list>
       </v-navigation-drawer>
   
-     
   </template>
+
+  <script>
+  export default {
+    data() {
+        return {
+           permissions : JSON.parse(localStorage.getItem("@permissions_petshop"))
+        }
+    }
+}
+
+</script>

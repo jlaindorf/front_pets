@@ -75,7 +75,7 @@
           }).then((data =>{
             api.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}` 
                 localStorage.setItem("@token_petshop", data.data.token)
-              /*  localStorage.setItem("@permissions_petshop", JSON.stringify(data.data.permissions))*/
+                localStorage.setItem("@permissions_petshop", JSON.stringify(data.data.permissions))
                 this.$router.push("/home")
           })) .catch((error) => { 
             console.log(error)
