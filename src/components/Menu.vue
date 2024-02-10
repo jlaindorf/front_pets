@@ -28,7 +28,7 @@
             </v-list-item>
           </router-link>
 
-          <router-link to="/veterinarios" v-if="permissions.includes('get-profissionals')">
+          <router-link to="/veterinarios" v-if="permissions.includes('get-professionals')">
            <v-list-item 
             prepend-icon="mdi-doctor"
             title="Profissionais" 
