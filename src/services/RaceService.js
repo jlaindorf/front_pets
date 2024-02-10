@@ -1,11 +1,10 @@
-import axios from 'axios';
+import api from "./api";
 
 class RaceService {
 
-   
-    async getAllRaces(race_id) {
-        const response = await axios
-        .get(`http://127.0.0.1:8000/api/races?race_id=${race_id}`)
+    async getAllRaces() {
+        const response = await api
+        .get('races')
         return response.data
     }
 }
