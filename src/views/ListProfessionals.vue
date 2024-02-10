@@ -56,7 +56,7 @@
     </v-row>
 </template>
 <script>
-
+import ProfessionalService from "../services/ProfessionalService"
 export default {
 
     data() {
@@ -73,7 +73,22 @@ export default {
     },
     methods: {
         handleSubmit(){
-            
+            ProfessionalService.createProfessional({
+                name: this.name,
+                email: this.email,
+                cpf: this.cpf,
+                contact: this.contact,
+                speciality: this.speciality,
+                register: this.register
+            })
+            .then(()=>{
+                alert("cadastrado com sucesso")
+                this.dialog = false
+                
+            })
+            .catch(()=>{
+                alert("deu ruim")
+            })
         }
     },
     mounted() {
