@@ -3,7 +3,7 @@ import api from "./api"
 class SpecieService {
     async getAllSpecies() {
         const response = await api
-        .get('races')
+        .get('species')
         return response.data;
     }
 }

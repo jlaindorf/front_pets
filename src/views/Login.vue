@@ -72,6 +72,7 @@
             email : this.email,
             password : this.password
           }).then((data =>{
+            api.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}` 
             localStorage.setItem("@token_petshop", data.data.token)
             this.$router.push("/home")
           })) .catch(() => { 
