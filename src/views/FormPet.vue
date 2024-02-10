@@ -39,7 +39,7 @@
 <script>
 import { optionsSize } from '../constants/pet.constants'
 
-import SpecieService from '../services/SpecieService'
+import SpecieService from '../services/specieService'
 import RaceService from '../services/RaceService'
 import PetService from '../services/PetService'
 import { schemaPetForm } from '../validations/pet.validations'

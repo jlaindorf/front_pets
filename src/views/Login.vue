@@ -72,7 +72,7 @@
             email : this.email,
             password : this.password
           }).then((data =>{
-            console.log(data)
+            localStorage.setItem("@token_petshop", data.data.token)
             this.$router.push("/home")
           })) .catch(() => { 
           alert('Credenciais Inválidas')
