@@ -58,6 +58,7 @@
   </template>
   <script>
   import AuthenticationService from '../services/AuthenticationService'
+  import api from "../services/api";
     export default {
       data(){
      return {
@@ -73,9 +74,11 @@
             password : this.password
           }).then((data =>{
             api.defaults.headers.common['Authorization'] = `Bearer ${data.data.token}` 
-            localStorage.setItem("@token_petshop", data.data.token)
-            this.$router.push("/home")
-          })) .catch(() => { 
+                localStorage.setItem("@token_petshop", data.data.token)
+              /*  localStorage.setItem("@permissions_petshop", JSON.stringify(data.data.permissions))*/
+                this.$router.push("/home")
+          })) .catch((error) => { 
+            console.log(error)
           alert('Credenciais Inválidas')
         })
   }
