@@ -23,4 +23,21 @@ describe("Testa a tela de aprendizado", () => {
 
         expect(list.text()).toContain("Estudar vue")
     })
+
+    it('Espera-se que ao submeter o formulário, o item não seja adicionado', async () => {
+        const component = mount(Aprendizado)
+        // Busca um elemento no componente
+        component.get("[data-test='input-description']").setValue("abc")
+        // clicando no botão de cadastrar
+        component.get("[data-test='submit-button']").trigger("submit")
+
+        await flushPromises()
+
+        expect(component.text()).toContain("A descrição é pequena demais.")
+
+        const list = component.get("[data-test='list']")
+
+        expect(list.text()).not.toContain("abc")
+    })
+
 })
