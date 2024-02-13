@@ -4,6 +4,7 @@ import ListPets from '../views/ListPets.vue'
 import FormPet from '../views/FormPet.vue'
 import Login from '../views/Login.vue'
 import ListProfessionals from '../views/ListProfessionals.vue'
+import Aprendizado from '../views/Aprendizado.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,6 +33,11 @@ const router = createRouter({
       path: '/veterinarios',
       name: 'ListProfessionals',
       component: ListProfessionals
+    },
+    {
+      path: '/aprendizado',
+      name: 'Aprendizado',
+      component: Aprendizado
     },
   ]
 })
