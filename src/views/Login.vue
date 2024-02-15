@@ -12,8 +12,9 @@
         max-width="448"
         rounded="lg"
       >
-        <div class="text-subtitle-1 text-medium-emphasis">Entre em sua Conta</div>
-  
+      <v-alert color="error" closable title="Houve um erro ao realizar o login" v-model="showError">Por favor, verifique suas credenciais e tente novamente.</v-alert>
+        <div class="text-subtitle-1 text-medium-emphasis mt-4">Entre em sua Conta</div>
+      
         <v-text-field
           density="compact"
           placeholder="Email"
@@ -68,6 +69,7 @@
         email :'',
         password :'',
         visible: false,
+        showError: false,
       }
     },
     methods: {
@@ -82,7 +84,7 @@
                 this.$router.push("/home")
           })) .catch((error) => { 
             console.log(error)
-          alert('Credenciais Inválidas')
+             this.showError=true
         })
   }
 }}
