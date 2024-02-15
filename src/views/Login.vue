@@ -24,7 +24,7 @@
 
   
         <v-text-field
-          :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+          :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
           :type="visible ? 'text' : 'password'"
           density="compact"
           placeholder="Senha"
