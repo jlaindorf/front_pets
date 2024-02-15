@@ -20,6 +20,13 @@ global.ResizeObserver = require('resize-observer-polyfill')
 
 describe('Tela de login',()=>{
     it('Espera-se que a tela seja renderizada',()=>{
+        vi.spyOn(AuthenticationService,'login').mockResolvedValue({
+            data: {
+                token: 'token',
+                permissions: []
+            }
+        })
+
       const component =  mount(Login,{
         global:{
             plugins:[vuetify]
@@ -28,4 +35,17 @@ describe('Tela de login',()=>{
       expect(component).toBeTruthy()
     })
 
+    it('Espera-se que ao submeter o formulário, seja redirecional para a tela home',()=>{
+        const component =  mount(Login,{
+            global:{
+                plugins:[vuetify]
+            }
+          })
+          //getComponent quando for um componente externo
+          component.getComponent("[data-test ='input-email']").setValue("j@gmail.com")
+          component.getComponent("[data-test ='input-password']").setValue("12345678")
+
+          component.getComponent("[data-test ='submit-button']").trigger("submit")
+       
+    })
 })

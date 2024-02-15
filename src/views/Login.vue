@@ -20,6 +20,7 @@
           prepend-inner-icon="mdi-email-outline"
           variant="outlined"
           v-model="email"
+          data-test="input-email"
         ></v-text-field>
 
   
@@ -32,6 +33,7 @@
           variant="outlined"
           @click:append-inner="visible = !visible"
           v-model="password"
+          data-test="input-password"
         ></v-text-field>
   
         <v-card
@@ -49,6 +51,7 @@
           color="orange"
           size="large"
           variant="flat"
+          data-test="submit-button"
         >
           ENTRAR
         </v-btn>
