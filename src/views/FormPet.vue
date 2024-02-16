@@ -34,7 +34,7 @@
       <v-card-actions class="d-flex justify-end">
         <v-btn type="submit" color="orange" variant="flat" data-test="submit-button">Cadastrar</v-btn>
       </v-card-actions>
-      <v-alert color="error" closable title="Houve um erro ao cadastrar o Pet"  v-if="showError" ></v-alert>
+      <v-alert class="mb-8" color="error" closable title="Houve um erro ao cadastrar o Pet"  v-if="showError" ></v-alert>
     </v-card>
   </form>
 </template>
