@@ -87,6 +87,7 @@ describe('Tela de cadastro de pet', () => {
             race_id: '2',
             specie_id: '2',
             weight: '50',
+            description:'',
         }
         )
 
@@ -132,6 +133,7 @@ describe('Tela de cadastro de pet', () => {
         component.getComponent(concatId("select-size")).setValue("LARGE")
         component.getComponent(concatId("select-race")).setValue("1")
         component.getComponent(concatId("select-specie")).setValue("2")
+        
 
         component.getComponent(concatId("submit-button")).trigger("submit")
 

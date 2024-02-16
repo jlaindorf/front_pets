@@ -31,9 +31,17 @@
             v-model="race_id" :error-messages="errors.race_id" data-test="select-race" />
         </v-col>
       </v-row>
-      <v-card-actions class="d-flex justify-end">
+      <v-row>
+        <v-row>
+      <v-col cols="12" md="12">
+          <v-textarea v-model="description" variant="outlined" label="Descrição"  data-test="input-description"></v-textarea>
+        </v-col>
+      </v-row>
+        <v-card-actions class="d-flex justify-end">
         <v-btn type="submit" color="orange" variant="flat" data-test="submit-button">Cadastrar</v-btn>
       </v-card-actions>
+      </v-row>
+     
       <v-alert class="mb-8" color="error" closable title="Houve um erro ao cadastrar o Pet"  v-if="showError" ></v-alert>
     </v-card>
   </form>
@@ -65,6 +73,7 @@ export default {
       errors: {},
       success: false,
       showError:false,
+      description:'',
     }
   },
   methods: {
@@ -76,7 +85,8 @@ export default {
         "specie_id": this.specie_id,
         "race_id": this.race_id,
         "age": this.age,
-        "weight": this.weight
+        "weight": this.weight,
+        "description": this.description
       }
       schemaPetForm.validateSync(body, { abortEarly: false })
 
