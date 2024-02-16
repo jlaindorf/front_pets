@@ -4,6 +4,7 @@
     Pet cadastrado com sucesso!
   </v-snackbar>
   <form @submit.prevent="handleSubmit">
+     
     <v-card width="80%" class="mx-auto px-6 mt-4" title="Cadastro Pet">
       <v-row>
         <v-col cols="12" md="8">
@@ -33,6 +34,7 @@
       <v-card-actions class="d-flex justify-end">
         <v-btn type="submit" color="orange" variant="flat" data-test="submit-button">Cadastrar</v-btn>
       </v-card-actions>
+      <v-alert color="error" closable title="Houve um erro ao cadastrar o Pet"  v-if="showError" ></v-alert>
     </v-card>
   </form>
 </template>
@@ -62,6 +64,7 @@ export default {
       race_id: '',
       errors: {},
       success: false,
+      showError:false,
     }
   },
   methods: {
@@ -90,7 +93,7 @@ export default {
 
         })
         .catch(() => {
-          alert('Houve um erro')
+         this.showError = true
         })
       } catch (error) {
         if (error instanceof yup.ValidationError) {
