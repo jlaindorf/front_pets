@@ -51,16 +51,7 @@ describe('Tela de cadastro de pet', () => {
         })
         expect(component).toBeTruthy()
     })
-    /*it('Espera-se que o input de idade do pet aceite somente números', () => {
 
-        const component = mount(FormPet, {
-            global: {
-                plugins: [vuetify]
-            }
-        })
-        component.getComponent(concatId("input-age")).setValue("25d")
-        expect( component.getComponent(concatId("input-age")).value).toEqual("25")
-    })*/
 
     it('Espera-se que ao submeter o formulário, seja cadastrado o pet com os valores corretos', () => {
         const createPet = vi.spyOn(PetService, 'createPet').mockResolvedValue({})
@@ -87,7 +78,7 @@ describe('Tela de cadastro de pet', () => {
             race_id: '2',
             specie_id: '2',
             weight: '50',
-            description:'',
+            description: '',
         }
         )
 
@@ -133,7 +124,7 @@ describe('Tela de cadastro de pet', () => {
         component.getComponent(concatId("select-size")).setValue("LARGE")
         component.getComponent(concatId("select-race")).setValue("1")
         component.getComponent(concatId("select-specie")).setValue("2")
-        
+
 
         component.getComponent(concatId("submit-button")).trigger("submit")
 
