@@ -2,9 +2,9 @@
       <v-navigation-drawer :rail="rail" permanent>
         <v-list>
           <v-list-item
-            prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
-            title="Douglas Cavalcante"
-            subtitle="doug@gmail.com"
+            prepend-avatar="https://avatars.githubusercontent.com/u/125938958?s=400&u=cdf3c1ffe0514fdd4cb26c770c7021bc1b36bf35&v=4"
+            title="Julio Laindorf"
+            subtitle="julio@gmail.com"
           ></v-list-item>
         </v-list>
   

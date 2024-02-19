@@ -12,19 +12,21 @@
         max-width="448"
         rounded="lg"
       >
-        <div class="text-subtitle-1 text-medium-emphasis">Entre em sua Conta</div>
-  
+      <v-alert color="error" closable title="Houve um erro ao realizar o login" v-model="showError">Por favor, verifique suas credenciais e tente novamente.</v-alert>
+        <div class="text-subtitle-1 text-medium-emphasis mt-4">Entre em sua Conta</div>
+      
         <v-text-field
           density="compact"
           placeholder="Email"
           prepend-inner-icon="mdi-email-outline"
           variant="outlined"
           v-model="email"
+          data-test="input-email"
         ></v-text-field>
 
   
         <v-text-field
-          :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
+          :append-inner-icon="visible ? 'mdi-eye' : 'mdi-eye-off'"
           :type="visible ? 'text' : 'password'"
           density="compact"
           placeholder="Senha"
@@ -32,6 +34,7 @@
           variant="outlined"
           @click:append-inner="visible = !visible"
           v-model="password"
+          data-test="input-password"
         ></v-text-field>
   
         <v-card
@@ -49,6 +52,7 @@
           color="orange"
           size="large"
           variant="flat"
+          data-test="submit-button"
         >
           ENTRAR
         </v-btn>
@@ -65,6 +69,7 @@
         email :'',
         password :'',
         visible: false,
+        showError: false,
       }
     },
     methods: {
@@ -79,7 +84,7 @@
                 this.$router.push("/home")
           })) .catch((error) => { 
             console.log(error)
-          alert('Credenciais Inválidas')
+             this.showError=true
         })
   }
 }}
