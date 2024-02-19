@@ -5,6 +5,8 @@ import FormPet from '../views/FormPet.vue'
 import Login from '../views/Login.vue'
 import ListProfessionals from '../views/ListProfessionals.vue'
 import Aprendizado from '../views/Aprendizado.vue'
+import Adoptions from '../views/Adoptions.vue'
+import FormUser from '../views/FormUser.vue'
 
 const routes = [
   {
@@ -37,6 +39,16 @@ const routes = [
     name: 'Aprendizado',
     component: Aprendizado
   },
+  {
+    path: '/adocoes',
+    name: 'Adoptions',
+    component: Adoptions
+  },
+  {
+    path: '/usuarios',
+    name: 'FormUser',
+    component: FormUser
+  }
 ]
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

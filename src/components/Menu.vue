@@ -1,53 +1,71 @@
 <template>
-      <v-navigation-drawer :rail="rail" permanent>
-        <v-list>
-          <v-list-item
-            prepend-avatar="https://avatars.githubusercontent.com/u/125938958?s=400&u=cdf3c1ffe0514fdd4cb26c770c7021bc1b36bf35&v=4"
-            title="Julio Laindorf"
-            subtitle="julio@gmail.com"
-          ></v-list-item>
-        </v-list>
-  
-        <v-divider></v-divider>
-  
-        <v-list density="compact" nav>
+  <v-navigation-drawer :rail="rail" permanent>
+    <v-list>
+      <v-list-item
+        prepend-avatar="https://randomuser.me/api/portraits/women/85.jpg"
+        :title="name"
+        :subtitle="profile"
+      ></v-list-item>
+    </v-list>
 
-          <router-link to="/home">
-            <v-list-item
-             prepend-icon="mdi-home" 
-             title="Home" 
-             value="myfiles">
-            </v-list-item>
-          </router-link>
+    <v-divider></v-divider>
 
-          <router-link to="/pets/novo">
-           <v-list-item 
-            prepend-icon="mdi-dog"
-            title="Novo Pet" 
-            value="myfiles">
-            </v-list-item>
-          </router-link>
+    <v-list density="compact" nav>
+      <router-link to="/home">
+        <v-list-item prepend-icon="mdi-folder" title="Home" value="home"> </v-list-item>
+      </router-link>
 
-          <router-link to="/veterinarios" v-if="permissions.includes('get-professionals')">
-           <v-list-item 
-            prepend-icon="mdi-doctor"
-            title="Profissionais" 
-            value="myfiles">
-            </v-list-item>
-          </router-link>
+      <router-link to="/pets/novo">
+        <v-list-item prepend-icon="mdi-star" title="Novo pet" value="pets"> </v-list-item>
+      </router-link>
 
-        </v-list>
-      </v-navigation-drawer>
-  
-  </template>
+      <router-link to="/veterinarios" v-if="permissions?.includes('get-profissionals')">
+        <v-list-item prepend-icon="mdi-star" title="Profissionais" value="profissionals"> </v-list-item>
+      </router-link>
 
-  <script>
-  export default {
-    data() {
-        return {
-           permissions : JSON.parse(localStorage.getItem("@permissions_petshop"))
-        }
+      <router-link to="/usuarios" v-if="permissions?.includes('create-users')">
+        <v-list-item prepend-icon="mdi-account" title="Usuários" value="users"> </v-list-item>
+      </router-link>
+
+      <router-link to="/adocoes">
+        <v-list-item prepend-icon="mdi-star" title="Adoções" value="adoptions"> </v-list-item>
+      </router-link>
+    </v-list>
+    <div class="pa-8">
+    <v-btn
+      :loading="loading"
+      @click="handleLogout"
+      block
+    >
+     Saindo
+      <template v-slot:loader>
+        <v-progress-linear indeterminate></v-progress-linear>
+      </template>
+    </v-btn>
+    </div>
+
+  </v-navigation-drawer>
+</template>
+
+<script>
+import AuthenticationService from '@/services/AuthenticationService'
+export default {
+  data(){
+    return {
+      permissions: JSON.parse(localStorage.getItem("@permissions_petshop")),
+      name: localStorage.getItem("@name"),
+      profile: localStorage.getItem("@profile"),
+      loading: false
+    }
+  },
+  methods: {
+      handleLogout() {
+        AuthenticationService.logout()
+        .then(() => {
+            this.$router.push('/')
+            localStorage.clear() // apagar tudo do localstorage desse dominio
+        })
+      }
     }
 }
-
 </script>
