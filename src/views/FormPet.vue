@@ -14,7 +14,7 @@
           <v-text-field v-model="age" type="number" variant="outlined" label="Idade" :error-messages="errors.age" data-test="input-age"></v-text-field>
         </v-col>
         <v-col cols="12" md="2">
-          <v-text-field v-model="weight" type="number" variant="outlined" label="Peso(KG)" :error-messages="errors.weight" data-test="input-weight"></v-text-field>
+          <v-text-field v-model="weight" type="number" variant="outlined" label="Peso(KG)" :error-messages="errors.weight" data-test="input-weight" step="0.1"></v-text-field>
         </v-col>
       </v-row>
       <v-row>
