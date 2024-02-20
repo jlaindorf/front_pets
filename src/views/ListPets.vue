@@ -1,6 +1,9 @@
 <template>
     <v-conteiner>
-        <h1>Lista de Pets</h1>
+        <div class="d-flex justify-space-between">
+      <h1>Lista de pets</h1>
+      <v-btn color="orange" variant="flat" @click="handleExport"> Exportar dados </v-btn>
+    </div>
         <v-table>
             <thead class="header-table">
                 <tr>
@@ -76,6 +79,13 @@ export default {
 
             }
         },
+        handleExport(){
+      PetService.export(this.$route.params.id)
+      .then(() => {
+        alert("Baixado com sucesso. verifique sua pasta de downloads")
+      })
+      .catch(() => alert("Houve ao exportar a lista de pets"))
+    },
         handleDeletePet(petId) {
             PetService.deleteOnePet(petId)
                 .then(() => {

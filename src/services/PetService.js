@@ -1,4 +1,5 @@
 import api from "./api"
+import { saveAs } from "file-saver"
 
 
 class PetService {
@@ -27,7 +28,11 @@ class PetService {
         const response = await api.put(`pets/${petId}`, body)
         return response.data
     }
-
+    
+    async export(){
+        const response = await api.get(`pets/export`, {responseType: 'blob'})
+        saveAs(response.data, 'lista_de_pets.pdf')
+    }
 
 }
 
