@@ -9,6 +9,7 @@
                     <th class="text-left">Porte</th>
                     <th class="text-left">Peso(Kg)</th>
                     <th class="text-left">Idade</th>
+                    <td class="text-ledt">Ações</td>
                 </tr>
             </thead>
             <tbody>
@@ -18,8 +19,31 @@
                     <td>{{ this.translateSize(pet.size) }}</td>
                     <td>{{ pet.weight }}</td>
                     <td>{{ pet.age }}</td>
-
+                    <td class="pa-4">
+            <v-menu>
+              <template v-slot:activator="{ props }">
+                <v-btn icon v-bind="props">
+                  <v-icon>mdi-dots-vertical</v-icon>
+                </v-btn>
+              </template>
+              <v-list>
+                <v-list-item @click="handleRedirectToEdit(pet.id)">
+                  <v-list-item-title>Editar</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="handleDeletePet(pet.id)">
+                  <v-list-item-title>Deletar</v-list-item-title>
+                </v-list-item>
+                <v-list-item @click="handleExportProfilePet(pet.id, pet.pet_name)">
+                  <v-list-item-title>Exportar</v-list-item-title>
+                </v-list-item>
+                 <v-list-item @click="handleRedirectVaccination(pet.id)">
+                  <v-list-item-title>Vacinação</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </td>
                 </tr>
+                
             </tbody>
         </v-table>
     </v-conteiner>
