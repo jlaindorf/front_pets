@@ -29,8 +29,8 @@ class PetService {
         return response.data
     }
     
-    async export(){
-        const response = await api.get(`pets/export`, {responseType: 'blob'})
+    async export(specie_id){
+        const response = await api.get(`pets/export?specie_id=${specie_id}`, {responseType: 'blob'})
         saveAs(response.data, 'lista_de_pets.pdf')
     }
 
