@@ -14,7 +14,7 @@
         <tbody>
           <tr v-for="user in users" :key="user.id" data-test="row-table">
             <td>{{ user.name }}</td>
-            <td>{{ user.profile }}</td>
+            <td>{{ user.profile.name}}</td>
           </tr>
         </tbody>
       </v-table>
