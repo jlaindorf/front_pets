@@ -74,7 +74,15 @@ export default {
             }
             
 
-        }}
+        }},
+        handleDeletePet(petId) {
+      PetService.deleteOnePet(petId)
+        .then(() => {
+          alert('Deletado com sucesso')
+          this.pets = this.pets.filter((item) => item.id !== petId)
+        })
+        .catch(() => alert('Erro ao deletar'))
+    },
     },
     mounted() {
         PetService.getAllPets(this.$route.params.id)
