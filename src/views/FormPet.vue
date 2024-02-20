@@ -68,19 +68,10 @@
         </v-col>
       </v-row>
       <v-row>
-        <v-row>
-      <v-col cols="12" md="12">
-          <v-textarea 
-           v-model="description" 
-           variant="outlined" 
-           label="Descrição"  
-           data-test="input-description">
-          </v-textarea>
-        </v-col>
-      </v-row>
         <v-card-actions class="d-flex justify-end">
           <v-btn color="orange" type="submit" variant="flat" data-test="submit-button">
           {{ petId ? 'Editar' : 'Cadastrar' }}
+
         </v-btn>
       </v-card-actions>
       </v-row>
