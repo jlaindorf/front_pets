@@ -20,30 +20,30 @@
                     <td>{{ pet.weight }}</td>
                     <td>{{ pet.age }}</td>
                     <td class="pa-4">
-            <v-menu>
-              <template v-slot:activator="{ props }">
-                <v-btn icon v-bind="props">
-                  <v-icon>mdi-dots-vertical</v-icon>
-                </v-btn>
-              </template>
-              <v-list>
-                <v-list-item @click="handleRedirectToEdit(pet.id)">
-                  <v-list-item-title>Editar</v-list-item-title>
-                </v-list-item>
-                <v-list-item @click="handleDeletePet(pet.id)">
-                  <v-list-item-title>Deletar</v-list-item-title>
-                </v-list-item>
-                <v-list-item @click="handleExportProfilePet(pet.id, pet.pet_name)">
-                  <v-list-item-title>Exportar</v-list-item-title>
-                </v-list-item>
-                 <v-list-item @click="handleRedirectVaccination(pet.id)">
-                  <v-list-item-title>Vacinação</v-list-item-title>
-                </v-list-item>
-              </v-list>
-            </v-menu>
-          </td>
+                        <v-menu>
+                            <template v-slot:activator="{ props }">
+                                <v-btn icon v-bind="props">
+                                    <v-icon>mdi-dots-vertical</v-icon>
+                                </v-btn>
+                            </template>
+                            <v-list>
+                                <v-list-item @click="handleRedirectToEdit(pet.id)">
+                                    <v-list-item-title>Editar</v-list-item-title>
+                                </v-list-item>
+                                <v-list-item @click="handleDeletePet(pet.id)">
+                                    <v-list-item-title>Deletar</v-list-item-title>
+                                </v-list-item>
+                                <v-list-item @click="handleExportProfilePet(pet.id, pet.pet_name)">
+                                    <v-list-item-title>Exportar</v-list-item-title>
+                                </v-list-item>
+                                <v-list-item @click="handleRedirectVaccination(pet.id)">
+                                    <v-list-item-title>Vacinação</v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </v-menu>
+                    </td>
                 </tr>
-                
+
             </tbody>
         </v-table>
     </v-conteiner>
@@ -57,32 +57,36 @@ export default {
             pets: []
         }
     },
-    methods:{
-        translateSize(name){
-            switch(name){
-            case'SMALL':{
-                return 'Pequeno'
-            }
-            case'MEDIUM':{
-                return 'Médio'
-            }
-            case'LARGE':{
-                return 'Grande'
-            }
-            case'EXTRA_LARGE':{
-                return 'Gigante'
-            }
-            
+    methods: {
+        translateSize(name) {
+            switch (name) {
+                case 'SMALL': {
+                    return 'Pequeno'
+                }
+                case 'MEDIUM': {
+                    return 'Médio'
+                }
+                case 'LARGE': {
+                    return 'Grande'
+                }
+                case 'EXTRA_LARGE': {
+                    return 'Gigante'
+                }
 
-        }},
+
+            }
+        },
         handleDeletePet(petId) {
-      PetService.deleteOnePet(petId)
-        .then(() => {
-          alert('Deletado com sucesso')
-          this.pets = this.pets.filter((item) => item.id !== petId)
-        })
-        .catch(() => alert('Erro ao deletar'))
-    },
+            PetService.deleteOnePet(petId)
+                .then(() => {
+                    alert('Deletado com sucesso')
+                    this.pets = this.pets.filter((item) => item.id !== petId) //filtra para atualizar a tela sem uma nova requisição do back-end
+                })
+                .catch(() => alert('Erro ao deletar'))
+        },
+        handleRedirectToEdit(petId) {
+            this.$router.push(`/pets/editar/${petId}`)
+        },
     },
     mounted() {
         PetService.getAllPets(this.$route.params.id)
