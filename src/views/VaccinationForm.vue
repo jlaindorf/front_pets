@@ -66,7 +66,7 @@
   
   <script>
   import { optionsStatus } from '@/constants/vaccine.constants'
-  import VaccineService from '@/services/VaccineService'
+  import VaccineService from '../services/VaccineService'
   import ProfessionalService from '@/services/ProfessionalService'
   import { parseISO } from 'date-fns'
   
@@ -100,24 +100,25 @@
       }
     },
     methods: {
-      handleSubmit() {
-        const body = {
-          name: this.name,
-          dose: this.dose,
-          status: this.status,
-          date: `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`,
-          pet_id: this.$route.params.id,
-          professional_id: this.professional_id
-        }
+    handleSubmit() {
+      const body = {
+        name: this.name,
+        dose: this.dose,
+        status: this.status,
+        date: `${this.date.getFullYear()}-${this.date.getMonth() + 1}-${this.date.getDate()}`,
+        pet_id: this.$route.params.id,
+        professional_id: this.professional_id
+      }
+
+      VaccineService.createVaccine(body)
+        .then(() => {
+          alert('Vacinado com sucesso')
+          this.dialog = false
+          this.getVaccines()
+        })
+        .catch(() => alert('Houve um erro'))
+    },
   
-        VaccineService.createVaccine(body)
-          .then(() => {
-            alert('Vacinado com sucesso')
-            this.dialog = false
-            this.getVaccines()
-          })
-          .catch(() => alert('Houve um erro'))
-      },
       getProfessionals() {
         ProfessionalService.getAllProfessionals()
           .then((data) => {
@@ -159,7 +160,7 @@
     },
     mounted() {
       this.getProfessionals()
-      this.getVaccines()
+      this.getVaccines
     }
   }
   </script>
