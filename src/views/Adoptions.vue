@@ -18,7 +18,7 @@
       <v-table>
         <thead class="header-table">
           <tr>
-            <th class="text-left">Pet</th>
+         
             <th class="text-left">Nome</th>
             <th class="text-left">CPF</th>
             <th class="text-left">Contato</th>
@@ -27,7 +27,7 @@
         </thead>
         <tbody>
           <tr v-for="adoption in adoptions" :key="adoption.id" data-test="row-table">
-            <td>{{ adoption.pet.name }}</td>
+         
             <td>{{ adoption.name }}</td>
             <td>{{ adoption.cpf }}</td>
             <td>{{ adoption.contact }}</td>
