@@ -18,20 +18,22 @@
       <v-table>
         <thead class="header-table">
           <tr>
-         
+            <th class="text-left">Pet</th>
             <th class="text-left">Nome</th>
             <th class="text-left">CPF</th>
             <th class="text-left">Contato</th>
-            <th class="text-left">email</th>
+            <th class="text-left">Email</th>
+            <th class="text-left">Aprovar</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="adoption in adoptions" :key="adoption.id" data-test="row-table">
-         
+            <td>{{ adoption.pet.name }}</td>
             <td>{{ adoption.name }}</td>
             <td>{{ adoption.cpf }}</td>
             <td>{{ adoption.contact }}</td>
             <td>{{ adoption.email }}</td>
+            <td><button @click="handleApprove(adoption.id)">Aprovar</button></td>
           </tr>
         </tbody>
       </v-table>
@@ -57,7 +59,14 @@
             this.adoptions = data
           })
           .catch(() => alert('Houve um erro ao buscar as adocoes'))
-      }
+      },
+      handleApprove(adoptionId){
+      AdoptionService.approve({adoption_id: adoptionId })
+      .then(() => {
+        alert("Aprovado com sucesso")
+      })
+      .catch(() => alert("houve um erro"))
+    }
     },
     mounted() {
       this.getList()
