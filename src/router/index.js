@@ -8,6 +8,7 @@ import Aprendizado from '../views/Aprendizado.vue'
 import Adoptions from '../views/Adoptions.vue'
 import FormUser from '../views/FormUser.vue'
 import VaccinationForm from '../views/VaccinationForm.vue'
+import Documents from '../views/Documents.vue'
 
 
 const routes = [
@@ -61,6 +62,11 @@ const routes = [
     path: '/pets/:id/vacinacao',
     name: 'VaccinationForm',
     component: VaccinationForm
+  },
+  {
+    path: '/adocoes/documentos/:id',
+    name: 'Documents',
+    component: Documents
   }
   
 ]
