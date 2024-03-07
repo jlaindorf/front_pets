@@ -14,7 +14,9 @@
       <router-link to="/home">
         <v-list-item prepend-icon="mdi-folder" title="Home" value="home"> </v-list-item>
       </router-link>
-
+      <router-link to="/dashboard">
+        <v-list-item prepend-icon="mdi-monitor-dashboard" title="Dashboard" value="dashboard"> </v-list-item>
+      </router-link>
       <router-link to="/pets/novo">
         <v-list-item prepend-icon="mdi-star" title="Novo pet" value="pets"> </v-list-item>
       </router-link>
