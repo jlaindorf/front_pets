@@ -9,6 +9,7 @@ import Adoptions from '../views/Adoptions.vue'
 import FormUser from '../views/FormUser.vue'
 import VaccinationForm from '../views/VaccinationForm.vue'
 import Documents from '../views/Documents.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 
 const routes = [
@@ -67,6 +68,11 @@ const routes = [
     path: '/adocoes/documentos/:id',
     name: 'Documents',
     component: Documents
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: Dashboard
   }
   
 ]
