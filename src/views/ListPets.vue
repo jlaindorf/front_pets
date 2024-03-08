@@ -7,6 +7,7 @@
       <v-table>
         <thead class="header-table">
           <tr>
+            <td class="text-ledt">Foto</td>
             <th class="text-left">Nome</th>
             <th class="text-left">Raça</th>
             <th class="text-left">Porte</th>
@@ -17,11 +18,12 @@
         </thead>
         <tbody>
           <tr v-for="pet in pets" :key="pet.id">
+            <td><img :src="pet.file.url" v-if="pet.file" width="40" height="40"/></td>
             <td>{{ pet.pet_name }}</td>
             <td>{{ pet.race.name }}</td>
             <td>{{ this.translateWeight(pet.size) }}</td>
             <td>{{ pet.age }}</td>
-            <td>{{ pet.weight }}</td>
+            <td>{{ pet.weight }}kg</td>
             <td class="pa-4">
               <v-menu>
                 <template v-slot:activator="{ props }">
